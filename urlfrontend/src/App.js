@@ -1,14 +1,22 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import AddUrlComponent from "./components/AddUrlComponent";
-import ViewUrlComponent from "./components/ViewUrlComponent";
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import AddUrlComponent from './components/AddUrlComponent';
+import ViewUrlComponent from './components/ViewUrlComponent';
 
 function App() {
-  return (
-    <div className="App container mt-5">
-      <AddUrlComponent />
-      <ViewUrlComponent />
-    </div>
-  );
+    return (
+        <div className="App container mt-5">
+            <header className="App-header">
+                <h1>URL Shortener</h1>
+            </header>
+            <AddUrlComponent />
+            <ViewUrlComponent />
+            <footer className="App-footer">
+                &copy; 2024 URL Shortener. All rights reserved.
+            </footer>
+        </div>
+    );
 }
 
 export default App;

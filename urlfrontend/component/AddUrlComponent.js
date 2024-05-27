@@ -1,54 +1,48 @@
-import React, { useState } from 'react'
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const AddUrlComponent = () => {
     const [url, setUrl] = useState("");
 
-    
-    const onSubmit = (e)=> {
+    const onSubmit = (e) => {
         e.preventDefault();
 
         if (!url) {
-          alert("please enter something");
-          return;
+            alert("Please enter a URL.");
+            return;
         }
 
         axios
-          .post("http://localhost:3001/short", {origUrl: url})
-          .then(res => {
-            console.log(res.data);
-          })
-          .catch(err => {
-            console.log(err.message);
-          });
+            .post("http://localhost:3001/short", { origUrl: url })
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
 
-        setUrl("")
-    }
-    console.log(url)
+        setUrl("");
+    };
 
-  return (
-    <div>
-      <main>
-        <section className="w-100 d-flex flex-column justify-content-center align-items-center">
-          <h1 className="mb-2 fs-1">URL Shortener</h1>
-          <form className="w-50" onSubmit={onSubmit}>
-            <input
-              className="w-100 border border-primary p-2 mb-2 fs-3 h-25"
-              type="text"
-              placeholder="http://samplesite.com"
-              value={url}
-              onChange={e => setUrl(e.target.value)}
-            />
-            <div class="d-grid gap-2 col-6 mx-auto">
-            <button type="submit" className="btn btn-danger m-5">
-              Shorten!
-            </button>
-            </div>
-          </form>
-        </section>
-      </main>
-    </div>
-  );
-}
+    return (
+        <div className="add-url-component">
+            <section className="d-flex flex-column justify-content-center align-items-center">
+                <h1 className="mb-4">URL Shortener</h1>
+                <form className="w-100" onSubmit={onSubmit}>
+                    <input
+                        className="form-control mb-3"
+                        type="text"
+                        placeholder="http://samplesite.com"
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
+                    />
+                    <button type="submit" className="btn btn-primary btn-lg w-100">
+                        Shorten URL
+                    </button>
+                </form>
+            </section>
+        </div>
+    );
+};
 
 export default AddUrlComponent;
