@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="App container mt-5">
             <header className="App-header">
-                <h1>URL Shortener</h1>
+                <h1>POCKET URL</h1>
             </header>
             <AddUrlComponent />
             <ViewUrlComponent />
